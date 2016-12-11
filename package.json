@@ -1,0 +1,25 @@
+{
+  "name": "suivielec",
+  "version": "1.0.0",
+  "description": "Tracking power consumption",
+  "main": "server/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Regnier-Mathieu/SuiviElec.git"
+  },
+  "author": "REGNIER Mathieu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Regnier-Mathieu/SuiviElec/issues"
+  },
+  "homepage": "https://github.com/Regnier-Mathieu/SuiviElec#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "nodemon": "^1.11.0"
+  }
+}
