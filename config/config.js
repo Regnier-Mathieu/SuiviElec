@@ -1,10 +1,7 @@
 let config = {
 
 	//lissening port
-	port: 4001
-
-	//database config
-	
+	port: 4002
 }
 
 module.exports = config
