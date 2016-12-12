@@ -1,13 +1,10 @@
-let bdd = require("../config/bd.js")
+"use strict";
+let mongoose    = require('mongoose');
+let Schema      = mongoose.Schema;
 
-class indexHpHc {
-
-    static create (hc,hp){
-        bdd.query("INSERT INTO index SET hc = ?, hp = ?, created_at = ?",[hc, hp, new Date()], (err, result)=> {
-            if(err) throw err
-
-            cb(result)
-        })
-    }
-}
-module.exports = indexHpHc
+let index       = new Schema ({
+    hc : Number,
+    hp : Number,
+    created_at : String
+});
+module.exports  = mongoose.model('index', index);

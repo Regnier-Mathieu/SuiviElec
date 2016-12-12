@@ -1,10 +1,12 @@
+"use strict";
 // Dependencies
-let express = require('express');
-let bodyParser = require('body-parser');
-let session = require('express-session');
-let config = require ('../config/config');
-let indexHpHc = require('../model/indexHpHc')
-let app = express();
+let express     = require('express');
+let mongoose    = require('mongoose');
+let bodyParser  = require('body-parser');
+let session     = require('express-session');
+let config      = require ('../config/config');
+let index       = require('../model/indexHpHc');
+let app         = express();
 
 // Template
 app.set('view engine', 'ejs');
@@ -21,6 +23,9 @@ app.use(session({
 }));
 app.use(require('./middlewares/flash'));
 
+// Database
+mongoose.connect('mongodb://localhost/SuiviElec');
+
 // Route
 app.get('/', (req, res) => {
     res.render('pages/index')
@@ -32,10 +37,10 @@ app.post('/', (req, res) => {
         req.flash("err",'Vous devez renseigner les deux champs :( ');
         res.redirect('/')
     }else{
-        indexHpHc.create(req.body.hc, req.body.hp, function(){
-            req.flash("succes","Votre enregistrement c'est bien deroulé");
+        index.create({'hc':req.body.hc, 'hp':req.body.hp, created_at: new Date()}, function() {
+            req.flash("succes","Votre enregistrement c'est bien déroulé");
             res.redirect('/result')
-        })
+        });
     }
 });
 
