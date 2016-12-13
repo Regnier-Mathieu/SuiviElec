@@ -1,5 +1,5 @@
 "use strict";
-module.exports = function (req, res, next) {
+module.exports = (req, res, next) => {
 
     if (req.session.flash){
 
@@ -7,7 +7,7 @@ module.exports = function (req, res, next) {
         req.session.flash = undefined
     }
 
-    req.flash = function (type, content){
+    req.flash = (type, content) => {
 
         if (req.session.flash === undefined){
             req.session.flash = {}

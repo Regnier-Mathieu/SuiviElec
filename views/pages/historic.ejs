@@ -1,0 +1,16 @@
+<% include ../layout/header %>
+<div>
+    <table class="table table-bordered col-lg-6">
+        <th> Index Heures creuse</th>
+        <th> Index Heures pleines</th>
+        <th> Date de création</th>
+        <tr>
+            <% for (index of indexs) { %>
+            <td><%= index.hc %></td>
+            <td><%= index.hp %></td>
+            <td><%= index.created_at %></td>
+        </tr>
+        <% } %>
+    </table>
+</div>
+<% include ../layout/footer %>
