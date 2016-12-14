@@ -4,13 +4,20 @@
 
 "use strict";
 module.exports      = (app) => {
+
     // Dependencies
+    let Index       = require('../../model/indexHpHc');
     let Config      = require('../../model/config');
     let test        = require('../modules/security');
 
     //display config page
     app.get('/config', (req, res) => {
-        res.render('pages/config')
+        Config.findOne({exist : true},(err, config) => {
+            if(err){
+                throw err
+            }
+            res.render('pages/config',{config : config})
+        });
     });
 
     // Analyses new configuration and put in bdd
@@ -34,8 +41,6 @@ module.exports      = (app) => {
             'exist': true
         };
         let dataNumber    = {
-            'hc': req.body.hc,
-            'hp': req.body.hp,
             'Monthly': req.body.abo,
             'subscription': req.body.subs,
             'unitHpPrice': req.body.hpp,
@@ -86,14 +91,43 @@ module.exports      = (app) => {
                         });
                     }
                     else {
-                        let query = {'exist': true}
+                        let query = {'exist': true};
+
                         Config.findOneAndUpdate(query, data, (err) =>{
                             if (err) {
                                 throw err
                             }
                             else{
-                                req.flash("success", "Votre enregistrement c'est bien déroulé ;)");
-                                res.redirect('/config')
+                                let hpandhc = {'hp': data.hp, 'hc': data.hc, 'created_at': data.billingDate}
+                                let query   = Index.find({});
+
+                                query.limit(1);
+                                query.exec( (err, index) => {
+                                    if(err){
+                                        throw err
+                                    }else
+                                    {
+                                        if(index.length == 0){
+                                            Index.create(hpandhc, (err) => {
+                                                if (err) {
+                                                    throw err
+                                                }
+                                                req.flash("success", "Votre enregistrement c'est bien déroulé ;)");
+                                                res.redirect('/config')
+                                            });
+                                        }
+                                        else{
+                                            Index.findOneAndUpdate(index, hpandhc, (err) => {
+                                                if (err) {
+                                                    throw err
+                                                }
+                                            });
+                                            req.flash("success", "Votre enregistrement c'est bien déroulé ;)");
+                                            res.redirect('/config')
+                                        }
+                                    }
+
+                                });
                             }
                         })
                     }

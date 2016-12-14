@@ -4,46 +4,46 @@
 
     <h3>Indexs initiaux</h3></br>
     <label for = "hp">Index initial heure pleine</label>
-    <input type = "number" class = "form-control" name="hp" id = "hp" placeholder = "Entrer index heure pleine">
+    <input type = "number" step="1" class = "form-control" name="hp" id = "hp" value="<%= config.hp %>" placeholder = "Entrer index heure pleine">
 
     <label for = "hc">Index initial heure creuse</label>
-    <input type = "number" class = "form-control" name="hc" id = "hc" placeholder = "Entrer index heure creuse"></br></br>
+    <input type = "number" step="1" class = "form-control" name="hc" id = "hc" value="<%= config.hc %>" placeholder = "Entrer index heure creuse"></br></br>
 
 
     <h3>Prix et date de facturation</h3></br>
     <label for = "subs">Montant de vos mensualités</label>
-    <input type = "number" class = "form-control" name="subs" id = "subs" placeholder = "Entrer montant de vos mensualités">
+    <input type = "number" step="1" class = "form-control" name="subs" id = "subs" value="<%= config.subscription %>" placeholder = "Entrer montant de vos mensualités">
 
     <label for = "hcp">Prix du KW/h HT Heure creuse</label>
-    <input type = "number" class = "form-control" name="hcp" id = "hcp" placeholder = "Entrer prix du KW/h HT Heure creuse">
+    <input type = "number" step="0.00001" class = "form-control" name="hcp" id = "hcp" value="<%= config.unitHcPrice %>" placeholder = "Entrer prix du KW/h HT Heure creuse">
 
     <label for = "hpp">Prix du KW/h HT Heure pleine</label>
-    <input type = "number" class = "form-control" name="hpp" id = "hpp" placeholder = "Entrer prix du KW/h HT Heure pleine">
+    <input type = "number" step="0.00001" class = "form-control" name="hpp" id = "hpp" value="<%= config.unitHpPrice %>" placeholder = "Entrer prix du KW/h HT Heure pleine">
 
     <label for = "abo">Prix de l'abonnement</label>
-    <input type = "number" class = "form-control" name="abo" id = "abo" placeholder = "Entrer prix de l'abonnement">
+    <input type = "number" step="0.00001" class = "form-control" name="abo" id = "abo" value="<%= config.Monthly %>" placeholder = "Entrer prix de l'abonnement">
 
     <label for = "date">Date de facturation</label>
-    <input type = "date" class = "form-control" name="date" id = "date" placeholder = "Entrer date de facturation"></br></br>
+    <input type = "date" class = "form-control" name="date" id = "date" value="<%= config.billingDate %>" placeholder = "Entrer date de facturation"></br></br>
 
     <h3>Tva et diverses Taxes</h3>
     <label for = "ltva">TVA basse</label>
-    <input type = "number" class = "form-control" name="ltva" id = "ltva" placeholder = "Entrer TVA basse">
+    <input type = "number" step="0.00001" class = "form-control" name="ltva" id = "ltva" value="<%= config.lowTVA %>" placeholder = "Entrer TVA basse">
 
     <label for = "htva">TVA haute</label>
-    <input type = "number" class = "form-control" name="htva" id = "htva" placeholder = "Entrer TVA haute">
+    <input type = "number" step="0.00001" class = "form-control" name="htva" id = "htva" value="<%= config.HighTVA %>" placeholder = "Entrer TVA haute">
 
     <label for = "CSPE">CSPE HT</label>
-    <input type = "number" class = "form-control" name="CSPE" id = "CSPE" placeholder = "Entrer CSPE HT">
+    <input type = "number" step="0.00001" class = "form-control" name="CSPE" id = "CSPE" value="<%= config.CSPEprice %>" placeholder = "Entrer CSPE HT">
 
     <label for = "CTA">CTA HT</label>
-    <input type = "number" class = "form-control" name="CTA" id = "CTA" placeholder = "Entrer CTA HT">
+    <input type = "number" step="0.00001" class = "form-control" name="CTA" id = "CTA" value="<%= config.CTA %>" placeholder = "Entrer CTA HT">
 
     <label for = "tm">Taxe municipales</label>
-    <input type = "number" class = "form-control" name="tm" id = "tm" placeholder = "Entrer Taxe municipales">
+    <input type = "number" step="0.00001" class = "form-control" name="tm" id = "tm" value="<%= config.taxMuni %>"  placeholder = "Entrer Taxe municipales">
 
     <label for = "td">Taxe départementales</label>
-    <input type = "number" class = "form-control" name="td" id = "td" placeholder = "Entrer Taxe départementales"></br></br>
+    <input type = "number" step="0.00001" class = "form-control" name="td" id = "td" value="<%= config.taxDep %>" placeholder = "Entrer Taxe départementales"></br></br>
 
     <button type = "submit" class = "btn btn-default">Envoyer</button>
 
